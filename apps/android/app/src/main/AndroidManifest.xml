@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 隐私：不申请任何权限（没有 INTERNET，结构上就没法联网）；关掉系统自动备份，
+         免得 App 数据（词库副本）被同步到云端 -->
+    <application
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.Light">
+
+        <!-- 装完点图标进去，一键跳到系统的输入法设置页 -->
+        <activity
+            android:name=".EnableActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 输入法本体：BIND_INPUT_METHOD 是系统绑定用的权限，必须 exported -->
+        <service
+            android:name=".QingjianImeService"
+            android:exported="true"
+            android:label="@string/ime_name"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
+        </service>
+    </application>
+
+</manifest>

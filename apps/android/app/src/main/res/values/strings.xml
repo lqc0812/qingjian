@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">青简</string>
+    <string name="ime_name">青简输入法</string>
+    <string name="subtype_zh">拼音</string>
+    <string name="enable_hint">青简还没有被启用。\n\n1. 点下面的按钮打开系统输入法设置\n2. 在「青简输入法」上打开开关\n3. 回到任意输入框，用键盘图标或空格键切到青简</string>
+    <string name="enable_button">打开输入法设置</string>
+    <string name="engine_failed">引擎加载失败：dict.qj 可能没打进包里</string>
+</resources>

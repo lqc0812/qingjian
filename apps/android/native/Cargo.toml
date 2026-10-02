@@ -1,0 +1,22 @@
+[package]
+name = "qingjian-android"
+description = "青简输入法 Android 壳的 JNI 桥：把平台无关的内核暴露给 Kotlin"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+# System.loadLibrary("qingjian_android") 加载的就是它
+name = "qingjian_android"
+crate-type = ["cdylib"]
+
+[dependencies]
+qingjian-core.workspace = true
+qingjian-dictionary.workspace = true
+qingjian-learning.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+# 只做 JNI 边界：不引入 qingjian-platform（它经 predict → async-openai → reqwest(native-tls)
+# 落到 openssl-sys，在 Android 目标上编不过，见上游 issue #235）
+jni = "0.21.1"
